@@ -4,8 +4,8 @@ import einops
 import imageio
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
-import gym
-import mujoco_py as mjc
+import gymnasium as gym 
+import mujoco
 import warnings
 import pdb
 
@@ -271,7 +271,7 @@ class MuJoCoRenderer:
 #-----------------------------------------------------------------------------#
 
 MAZE_BOUNDS = {
-    'maze2d-umaze-v1': (0, 5, 0, 5),
+    'pointmaze-umaze-v2': (0, 5, 0, 5),
     'maze2d-medium-v1': (0, 8, 0, 8),
     'maze2d-large-v1': (0, 9, 0, 12)
 }
@@ -328,7 +328,8 @@ class Maze2dRenderer(MazeRenderer):
         self.observation_dim = np.prod(self.env.observation_space.shape)
         self.action_dim = np.prod(self.env.action_space.shape)
         self.goal = None
-        self._background = self.env.maze_arr == 10
+        # self._background = self.env.maze_map == 10
+        self._background = False
         self._remove_margins = False
         self._extent = (0, 1, 1, 0)
 

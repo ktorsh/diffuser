@@ -1,4 +1,4 @@
-import gym
+import gymnasium as gym 
 import numpy as np
 import einops
 from scipy.spatial.transform import Rotation as R
@@ -20,6 +20,7 @@ def compose(*fns):
     return _fn
 
 def get_preprocess_fn(fn_names, env):
+    print(f"fn_name: {fn_names}")
     fns = [eval(name)(env) for name in fn_names]
     return compose(*fns)
 
@@ -58,29 +59,33 @@ def add_deltas(env):
 
 def maze2d_set_terminals(env):
     env = load_environment(env) if type(env) == str else env
-    goal = np.array(env._target)
-    threshold = 0.5
+    observation, _ = env.reset()
 
+    goal = np.array(observation['desired_goal'])
+    threshold = 0.5 
+    print(f"Goal: {goal}")
     def _fn(dataset):
-        xy = dataset['observations'][:,:2]
+        print(dataset)
+        xy = dataset.observations[:,:2]
         distances = np.linalg.norm(xy - goal, axis=-1)
+        print(f"Min Distances: {distances.min()}")
         at_goal = distances < threshold
-        timeouts = np.zeros_like(dataset['timeouts'])
-
+        print(f"At Goal Count: {at_goal.sum()}")
+        timeouts = np.zeros_like(dataset.timeouts)
+        print(at_goal)
         ## timeout at time t iff
         ##      at goal at time t and
         ##      not at goal at time t + 1
         timeouts[:-1] = at_goal[:-1] * ~at_goal[1:]
-
         timeout_steps = np.where(timeouts)[0]
         path_lengths = timeout_steps[1:] - timeout_steps[:-1]
-
+        print(path_lengths)
         print(
             f'[ utils/preprocessing ] Segmented {env.name} | {len(path_lengths)} paths | '
             f'min length: {path_lengths.min()} | max length: {path_lengths.max()}'
         )
 
-        dataset['timeouts'] = timeouts
+        dataset.timeouts = timeouts
         return dataset
 
     return _fn
@@ -97,7 +102,7 @@ def blocks_quat_to_euler(observations):
 
         returns : [ N x robot_dim + n_blocks * 10] = [ N x 47 ]
             xyz: 3
-            sin: 3
+            sin: 3ls
             cos: 3
             contact: 1
     '''

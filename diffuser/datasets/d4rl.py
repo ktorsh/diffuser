@@ -1,8 +1,14 @@
 import os
 import collections
 import numpy as np
-import gym
+import gymnasium as gym
 import pdb
+
+import gymnasium_robotics
+import minari 
+from torch.utils.data import DataLoader
+import h5py
+from .dataset import Dataset
 
 from contextlib import (
     contextmanager,
@@ -20,9 +26,6 @@ def suppress_output():
         with redirect_stderr(fnull) as err, redirect_stdout(fnull) as out:
             yield (err, out)
 
-with suppress_output():
-    ## d4rl prints out a variety of warnings
-    import d4rl
 
 #-----------------------------------------------------------------------------#
 #-------------------------------- general api --------------------------------#
@@ -33,24 +36,29 @@ def load_environment(name):
         ## name is already an environment
         return name
     with suppress_output():
-        wrapped_env = gym.make(name)
+        maze_map = [[1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 0, 1, 0, 1],
+        [1, 1, 1, 1, 1, 0, 1, 0, 1],
+        [1, 1, 1, 1,1, 1, 1, 1, 1],
+        [1, 1, 1, 1,1, 1, 1, 1, 1],
+        [1, 1, 1, 1,1, 1, 1, 1, 1],
+        [1, 1, 1, 1,1, 1, 1, 1, 1],
+        [1, 1, 1, 1,1, 1, 1, 1, 1]]
+        wrapped_env = gym.make('PointMaze_UMaze-v3', maze_map=maze_map)
     env = wrapped_env.unwrapped
     env.max_episode_steps = wrapped_env._max_episode_steps
     env.name = name
     return env
 
-def get_dataset(env):
-    dataset = env.get_dataset()
+def get_dataset(name):
+    return Dataset("/Users/ktorsh/Documents/diffusion_proj/diffuser/diffuser/datasets/preloaded_data/maze2d-umaze-sparse-v1.hdf5")
 
-    if 'antmaze' in str(env).lower():
-        ## the antmaze-v0 environments have a variety of bugs
-        ## involving trajectory segmentation, so manually reset
-        ## the terminal and timeout fields
-        dataset = antmaze_fix_timeouts(dataset)
-        dataset = antmaze_scale_rewards(dataset)
-        get_max_delta(dataset)
+def load_dataset_and_environment(name): 
+    dataset = minari.load_dataset('D4RL/pointmaze/umaze-v2')
+    env  = dataset.recover_environment(eval_env=True)
 
-    return dataset
+    return dataset, env
 
 def sequence_dataset(env, preprocess_fn):
     """
@@ -70,24 +78,25 @@ def sequence_dataset(env, preprocess_fn):
     dataset = get_dataset(env)
     dataset = preprocess_fn(dataset)
 
-    N = dataset['rewards'].shape[0]
+    N = dataset.rewards.shape[0]
     data_ = collections.defaultdict(list)
 
     # The newer version of the dataset adds an explicit
     # timeouts field. Keep old method for backwards compatability.
-    use_timeouts = 'timeouts' in dataset
-
+    # use_timeouts = 'timeouts' in dataset
+    use_timeouts = True
+ 
     episode_step = 0
     for i in range(N):
-        done_bool = bool(dataset['terminals'][i])
+        done_bool = bool(dataset.terminals[i])
         if use_timeouts:
-            final_timestep = dataset['timeouts'][i]
+            final_timestep = dataset.timeouts[i]
         else:
             final_timestep = (episode_step == env._max_episode_steps - 1)
 
-        for k in dataset:
+        for k in dataset.mapping:
             if 'metadata' in k: continue
-            data_[k].append(dataset[k][i])
+            data_[k].append(dataset.get(k)[i])
 
         if done_bool or final_timestep:
             episode_step = 0

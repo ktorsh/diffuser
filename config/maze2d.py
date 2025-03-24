@@ -108,7 +108,7 @@ base = {
         large: 600
 '''
 
-maze2d_umaze_v1 = {
+pointmaze_umaze_v2 = {
     'diffusion': {
         'horizon': 128,
         'n_diffusion_steps': 64,
