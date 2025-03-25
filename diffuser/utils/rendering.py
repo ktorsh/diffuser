@@ -281,7 +281,8 @@ class MazeRenderer:
     def __init__(self, env):
         if type(env) is str: env = load_environment(env)
         self._config = env._config
-        self._background = self._config != ' '
+        # self._background = self._config != ' '
+        self._background = self.env.maze._maze_map == 0
         self._remove_margins = False
         self._extent = (0, 1, 1, 0)
 
@@ -289,7 +290,8 @@ class MazeRenderer:
         plt.clf()
         fig = plt.gcf()
         fig.set_size_inches(5, 5)
-        plt.imshow(self._background * .5,
+
+        plt.imshow(self._background ,
             extent=self._extent, cmap=plt.cm.binary, vmin=0, vmax=1)
 
         path_length = len(observations)
@@ -328,8 +330,9 @@ class Maze2dRenderer(MazeRenderer):
         self.observation_dim = np.prod(self.env.observation_space.shape)
         self.action_dim = np.prod(self.env.action_space.shape)
         self.goal = None
-        # self._background = self.env.maze_map == 10
-        self._background = False
+        self._background = np.array(self.env.maze._maze_map)
+        self._background = self._background[:self._background.shape[0]//2, self._background.shape[1]//2:]
+        self._background = np.flipud(self._background)
         self._remove_margins = False
         self._extent = (0, 1, 1, 0)
 

@@ -5,7 +5,7 @@ import gymnasium as gym
 import pdb
 
 import gymnasium_robotics
-import minari 
+# import minari ß
 from torch.utils.data import DataLoader
 import h5py
 from .dataset import Dataset
@@ -52,13 +52,13 @@ def load_environment(name):
     return env
 
 def get_dataset(name):
-    return Dataset("/Users/ktorsh/Documents/diffusion_proj/diffuser/diffuser/datasets/preloaded_data/maze2d-umaze-sparse-v1.hdf5")
+    return Dataset("/fs/nexus-scratch/ktorsh/diffuser/diffuser/datasets/preloaded_data/maze2d-umaze-sparse-v1.hdf5")
 
-def load_dataset_and_environment(name): 
-    dataset = minari.load_dataset('D4RL/pointmaze/umaze-v2')
-    env  = dataset.recover_environment(eval_env=True)
+# def load_dataset_and_environment(name): 
+#     dataset = minari.load_dataset('D4RL/pointmaze/umaze-v2')
+#     env  = dataset.recover_environment(eval_env=True)
 
-    return dataset, env
+#     return dataset, env
 
 def sequence_dataset(env, preprocess_fn):
     """
