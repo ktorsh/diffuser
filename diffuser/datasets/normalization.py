@@ -155,6 +155,9 @@ class LimitsNormalizer(Normalizer):
 
     def normalize(self, x):
         ## [ 0, 1 ]
+        print("Normalization Error")
+        print(x)
+        print(self.mins)
         x = (x - self.mins) / (self.maxs - self.mins)
         ## [ -1, 1 ]
         x = 2 * x - 1

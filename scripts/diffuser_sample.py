@@ -1,7 +1,7 @@
 import diffuser.utils as utils
 
 class Args:
-  loadpath = 'logs/pretrained/hopper-medium-expert-v2/diffusion/H128_T100'
+  loadpath = '/fs/nexus-scratch/ktorsh/diffuser/logs/pointmaze-umaze-v2/diffusion/H128_T64'
   diffusion_epoch = 'latest'
   n_samples = 4
   device = 'cuda:0'

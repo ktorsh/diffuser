@@ -5,7 +5,7 @@ import pdb
 
 ####
 import sys
-sys.path.append('/home/janner/mount/diffusion')
+sys.path.append('/fs/nexus-scratch/ktorsh/diffusion')
 import diffusion
 ####
 

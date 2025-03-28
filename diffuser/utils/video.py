@@ -10,7 +10,8 @@ def _make_dir(filename):
 def save_video(filename, video_frames, fps=60, video_format='mp4'):
     assert fps == int(fps), fps
     _make_dir(filename)
-
+    print(filename)
+    print(video_frames)
     skvideo.io.vwrite(
         filename,
         video_frames,

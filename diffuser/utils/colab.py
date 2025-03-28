@@ -19,7 +19,9 @@ from .video import save_video
 
 def run_diffusion(model, dataset, obs, n_samples=1, device='cuda:0', **diffusion_kwargs):
   ## normalize observation for model
-  obs = dataset.normalizer.normalize(obs, 'observations')
+  print("Observation")
+  print(obs)
+  obs = dataset.normalizer.normalize(obs[0]['observation'], 'observations')
 
   ## add a batch dimension and repeat for multiple samples
   ## [ observation_dim ] --> [ n_samples x observation_dim ]
@@ -50,7 +52,7 @@ def run_diffusion(model, dataset, obs, n_samples=1, device='cuda:0', **diffusion
   return observations
 
 
-def show_diffusion(renderer, observations, n_repeat=100, substep=1, filename='diffusion.mp4', savebase='/content/videos'):
+def show_diffusion(renderer, observations, n_repeat=100, substep=1, filename='diffusion.mp4', savebase='/fs/nexus-scratch/ktorsh/diffuser/content/videos'):
     '''
         observations : [ n_diffusion_steps x batch_size x horizon x observation_dim ]
     '''
@@ -77,7 +79,7 @@ def show_diffusion(renderer, observations, n_repeat=100, substep=1, filename='di
     show_video(savepath)
 
 
-def show_sample(renderer, observations, filename='sample.mp4', savebase='/content/videos'):
+def show_sample(renderer, observations, filename='sample.mp4', savebase='/fs/nexus-scratch/ktorsh/diffuser/content/videos'):
     '''
         observations : [ batch_size x horizon x observation_dim ]
     '''
@@ -88,7 +90,7 @@ def show_sample(renderer, observations, filename='sample.mp4', savebase='/conten
     images = []
     for rollout in observations:
         ## [ horizon x height x width x channels ]
-        img = renderer._renders(rollout, partial=True)
+        img = renderer.renders(rollout)
         images.append(img)
 
     ## [ horizon x height x (batch_size * width) x channels ]
