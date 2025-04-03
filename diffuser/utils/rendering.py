@@ -296,8 +296,8 @@ class MazeRenderer:
 
         path_length = len(observations)
         colors = plt.cm.jet(np.linspace(0,1,path_length))
-        plt.plot(observations[:,1], observations[:,0], c='black', zorder=10)
-        plt.scatter(observations[:,1], observations[:,0], c=colors, zorder=20)
+        plt.plot(observations[:,0] +0.4, observations[:,1] +0.4, c='black', zorder=10)
+        plt.scatter(observations[:,0] +0.4, observations[:,1] +0.4, c=colors, zorder=20)
         plt.axis('off')
         plt.title(title)
         img = plot2img(fig, remove_margins=self._remove_margins)
@@ -319,7 +319,7 @@ class MazeRenderer:
         nrow = len(images) // ncol
         images = einops.rearrange(images,
             '(nrow ncol) H W C -> (nrow H) (ncol W) C', nrow=nrow, ncol=ncol)
-        # imageio.imsave(savepath, images)
+        imageio.imsave(savepath, images)
         print(f'Saved {len(paths)} samples to: {savepath}')
         return images
 
@@ -332,8 +332,6 @@ class Maze2dRenderer(MazeRenderer):
         self.action_dim = np.prod(self.env.action_space.shape)
         self.goal = None
         self._background = np.array(self.env.maze._maze_map)
-        self._background = self._background[:self._background.shape[0]//2, self._background.shape[1]//2:]
-        self._background = np.flipud(self._background)
         self._remove_margins = False
         self._extent = (0, 1, 1, 0)
 

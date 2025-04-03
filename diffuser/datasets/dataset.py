@@ -9,7 +9,6 @@ class Dataset:
         Args:
             file_path (str): Path to the .h5 or .hdf5 file.
             keys (list, optional): List of dataset keys to load (e.g., ["observations", "actions"]).
-                                   If None, loads all top-level datasets.
         """
 
         self.dataset = h5py.File(file_path, "r")

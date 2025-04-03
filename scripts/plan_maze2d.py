@@ -9,7 +9,7 @@ import diffuser.utils as utils
 
 
 class Parser(utils.Parser):
-    dataset: str = 'maze2d-umaze-v1'
+    dataset: str = 'pointmaze-umaze-v2'
     config: str = 'config.maze2d'
 
 #---------------------------------- setup ----------------------------------#
@@ -32,31 +32,30 @@ policy = Policy(diffusion, dataset.normalizer)
 
 #---------------------------------- main loop ----------------------------------#
 
-observation = env.reset()
+observation, _ = env.reset()
 
 if args.conditional:
     print('Resetting target')
     env.set_target()
 
 ## set conditioning xy position to be the goal
-target = env._target
+target = np.array(observation['desired_goal'])
 cond = {
     diffusion.horizon - 1: np.array([*target, 0, 0]),
 }
-
 ## observations for rendering
-rollout = [observation.copy()]
+rollout = [observation['observation']]
 
 total_reward = 0
 for t in range(env.max_episode_steps):
-
-    state = env.state_vector().copy()
+    state = observation['observation']
 
     ## can replan if desired, but the open-loop plans are good enough for maze2d
     ## that we really only need to plan once
     if t == 0:
-        cond[0] = observation
-
+        cond[0] = observation['observation']
+        print("Condition")
+        print(cond)
         action, samples = policy(cond, batch_size=args.batch_size)
         actions = samples.actions[0]
         sequence = samples.observations[0]
@@ -85,10 +84,10 @@ for t in range(env.max_episode_steps):
     #         pdb.set_trace()
 
 
-
-    next_observation, reward, terminal, _ = env.step(action)
+    next_observation, reward, terminal, _, _ = env.step(action)
     total_reward += reward
-    score = env.get_normalized_score(total_reward)
+    # score = env.get_normalized_score(total_reward)
+    score = total_reward
     print(
         f't: {t} | r: {reward:.2f} |  R: {total_reward:.2f} | score: {score:.4f} | '
         f'{action}'
@@ -102,7 +101,7 @@ for t in range(env.max_episode_steps):
         )
 
     ## update rollout observations
-    rollout.append(next_observation.copy())
+    rollout.append(next_observation['observation'])
 
     # logger.log(score=score, step=t)
 
