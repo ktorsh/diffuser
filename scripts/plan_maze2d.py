@@ -18,7 +18,7 @@ args = Parser().parse_args('plan')
 
 # logger = utils.Logger(args)
 
-env = datasets.load_environment(args.dataset)
+env = datasets.load_environment(args.dataset, reset_target=False)
 
 #---------------------------------- loading ----------------------------------#
 
@@ -31,7 +31,8 @@ renderer = diffusion_experiment.renderer
 policy = Policy(diffusion, dataset.normalizer)
 
 #---------------------------------- main loop ----------------------------------#
-
+env.reset_pos = np.array([-1, -1])
+env.goal_pos = np.array([1, 1])
 observation, _ = env.reset()
 
 if args.conditional:
@@ -40,9 +41,14 @@ if args.conditional:
 
 ## set conditioning xy position to be the goal
 target = np.array(observation['desired_goal'])
+print("Target")
+print(target)
 cond = {
     diffusion.horizon - 1: np.array([*target, 0, 0]),
 }
+# cond = { 
+#     diffusion.horizon - 1: np.array([1, 1, 0, 0]),
+# }
 ## observations for rendering
 rollout = [observation['observation']]
 
@@ -52,13 +58,17 @@ for t in range(env.max_episode_steps):
 
     ## can replan if desired, but the open-loop plans are good enough for maze2d
     ## that we really only need to plan once
-    if t == 0:
+    if t  == 0:
         cond[0] = observation['observation']
         print("Condition")
         print(cond)
         action, samples = policy(cond, batch_size=args.batch_size)
+        print(action)
+        print(samples)
         actions = samples.actions[0]
         sequence = samples.observations[0]
+        print()
+
     # pdb.set_trace()
 
     # ####
@@ -71,6 +81,9 @@ for t in range(env.max_episode_steps):
 
     ## can use actions or define a simple controller based on state predictions
     action = next_waypoint[:2] - state[:2] + (next_waypoint[2:] - state[2:])
+
+    # action = action - 0.25
+
     # pdb.set_trace()
     ####
 
@@ -93,9 +106,9 @@ for t in range(env.max_episode_steps):
         f'{action}'
     )
 
-    if 'maze2d' in args.dataset:
-        xy = next_observation[:2]
-        goal = env.unwrapped._target
+    if 'pointmaze' in args.dataset:
+        xy = next_observation['observation'][:2]
+        goal = next_observation['desired_goal']
         print(
             f'maze | pos: {xy} | goal: {goal}'
         )
@@ -108,7 +121,9 @@ for t in range(env.max_episode_steps):
     if t % args.vis_freq == 0 or terminal:
         fullpath = join(args.savepath, f'{t}.png')
 
-        if t == 0: renderer.composite(fullpath, samples.observations, ncol=1)
+        if t == 0: 
+            renderer.composite(fullpath, samples.observations, ncol=1)
+
 
 
         # renderer.render_plan(join(args.savepath, f'{t}_plan.mp4'), samples.actions, samples.observations, state)

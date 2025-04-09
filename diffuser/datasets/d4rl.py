@@ -31,12 +31,12 @@ def suppress_output():
 #-------------------------------- general api --------------------------------#
 #-----------------------------------------------------------------------------#
 
-def load_environment(name):
+def load_environment(name, reset_target=True):
     if type(name) != str:
         ## name is already an environment
         return name
     with suppress_output():
-        wrapped_env = gym.make('PointMaze_UMaze-v3')
+        wrapped_env = gym.make('PointMaze_UMaze-v3', reset_target=reset_target)
     env = wrapped_env.unwrapped
     env.max_episode_steps = wrapped_env._max_episode_steps
     env.name = name

@@ -3,7 +3,7 @@ import diffuser.utils as utils
 class Args:
   loadpath = '/fs/nexus-scratch/ktorsh/diffuser/logs/pointmaze-umaze-v2/diffusion/H128_T64'
   diffusion_epoch = 'latest'
-  n_samples = 4
+  n_samples = 1
   device = 'cuda:0'
     
 args = Args()
