@@ -1,0 +1,93 @@
+{
+    "add_extras": {
+        "_string": "<bound method Parser.add_extras of Parser(prog='train_values.py', usage=None, description=None, formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)>",
+        "_type": "python_object (type = method)",
+        "_value": "gASVZgQAAAAAAACMCGJ1aWx0aW5zlIwHZ2V0YXR0cpSTlIwIX19tYWluX1+UjAZQYXJzZXKUk5QpgZR9lCiMC3VzZV9wYWRkaW5nlImMCHNldF9zZWVklGgCaAZoCYaUUpSMB2RhdGFzZXSUjBJwb2ludG1hemUtdW1hemUtdjKUjAduX3NhdmVzlEsFjAhzYXZlcGF0aJSMMGxvZ3MvcG9pbnRtYXplLXVtYXplLXYyL3ZhbHVlcy9kZWZhdWx0c19IMTI4X1Q2NJSMDWxlYXJuaW5nX3JhdGWURz8qNuLrHEMtjA1ldmFsX2ZzdHJpbmdzlGgCaAZoEoaUUpSMCHJlbmRlcmVylIwUdXRpbHMuTWF6ZTJkUmVuZGVyZXKUjAZsb2FkZXKUjBVkYXRhc2V0cy5WYWx1ZURhdGFzZXSUjBFuX3N0ZXBzX3Blcl9lcG9jaJRNECeME3Rlcm1pbmF0aW9uX3BlbmFsdHmUSpz///+MBmNvbW1pdJSML2YzODMwZDhmZTY2YzZmMGJmNmZlYzhmNDkxNGFiZWYyNTFmOTJiNjkgbWF6ZTJklIwJZW1hX2RlY2F5lEc/79cKPXCj14wKZ2V0X2NvbW1pdJRoAmgGaB6GlFKUjAVta2RpcpRoAmgGaCGGlFKUjAhkaXNjb3VudJRHP++uFHrhR66MGWdyYWRpZW50X2FjY3VtdWxhdGVfZXZlcnmUSwKMEW5fZGlmZnVzaW9uX3N0ZXBzlEtAjAlkaW1fbXVsdHOUSwFLBEsIh5SMCGV4cF9uYW1llIwYdmFsdWVzL2RlZmF1bHRzX0gxMjhfVDY0lIwJZGlmZnVzaW9ulIwVbW9kZWxzLlZhbHVlRGlmZnVzaW9ulIwJc2F2ZV9mcmVxlE3oA4wJc2F2ZV9kaWZmlGgCaAZoLoaUUpSMD21heF9wYXRoX2xlbmd0aJRNQJyMB2hvcml6b26US4CMDW5fdHJhaW5fc3RlcHOUR0EYagAAAAAAjApub3JtYWxpemVylIwQTGltaXRzTm9ybWFsaXplcpSMBmRldmljZZSMBGN1ZGGUjA5wcmVwcm9jZXNzX2Zuc5RdlIwUbWF6ZTJkX3NldF90ZXJtaW5hbHOUYYwGbm9ybWVklImMBmNvbmZpZ5SMDWNvbmZpZy5tYXplMmSUjAtuX3JlZmVyZW5jZZRLCIwKYWRkX2V4dHJhc5RoAmgGaD+GlFKUjAdsb2diYXNllIwEbG9nc5SMBnByZWZpeJSMD3ZhbHVlcy9kZWZhdWx0c5SMEWdlbmVyYXRlX2V4cF9uYW1llGgCaAZoRoaUUpSMC3NhbXBsZV9mcmVxlEsAjA1zYXZlX3BhcmFsbGVslImMBW1vZGVslIwUbW9kZWxzLlRlbXBvcmFsVmFsdWWUjAtyZWFkX2NvbmZpZ5RoAmgGaE2GlFKUjAZidWNrZXSUTowJbG9zc190eXBllIwIdmFsdWVfbDKUjApiYXRjaF9zaXpllEsgdWJoP4aUUpQu"
+    },
+    "batch_size": 32,
+    "bucket": null,
+    "commit": "f3830d8fe66c6f0bf6fec8f4914abef251f92b69 maze2d",
+    "config": "config.maze2d",
+    "dataset": "pointmaze-umaze-v2",
+    "device": "cuda",
+    "diffusion": "models.ValueDiffusion",
+    "dim_mults": {
+        "_type": "tuple",
+        "_value": [
+            1,
+            4,
+            8
+        ]
+    },
+    "discount": 0.99,
+    "ema_decay": 0.995,
+    "eval_fstrings": {
+        "_string": "<bound method Parser.eval_fstrings of Parser(prog='train_values.py', usage=None, description=None, formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)>",
+        "_type": "python_object (type = method)",
+        "_value": "gASVZgQAAAAAAACMCGJ1aWx0aW5zlIwHZ2V0YXR0cpSTlIwIX19tYWluX1+UjAZQYXJzZXKUk5QpgZR9lCiMC3VzZV9wYWRkaW5nlImMCHNldF9zZWVklGgCaAZoCYaUUpSMB2RhdGFzZXSUjBJwb2ludG1hemUtdW1hemUtdjKUjAduX3NhdmVzlEsFjAhzYXZlcGF0aJSMMGxvZ3MvcG9pbnRtYXplLXVtYXplLXYyL3ZhbHVlcy9kZWZhdWx0c19IMTI4X1Q2NJSMDWxlYXJuaW5nX3JhdGWURz8qNuLrHEMtjA1ldmFsX2ZzdHJpbmdzlGgCaAZoEoaUUpSMCHJlbmRlcmVylIwUdXRpbHMuTWF6ZTJkUmVuZGVyZXKUjAZsb2FkZXKUjBVkYXRhc2V0cy5WYWx1ZURhdGFzZXSUjBFuX3N0ZXBzX3Blcl9lcG9jaJRNECeME3Rlcm1pbmF0aW9uX3BlbmFsdHmUSpz///+MBmNvbW1pdJSML2YzODMwZDhmZTY2YzZmMGJmNmZlYzhmNDkxNGFiZWYyNTFmOTJiNjkgbWF6ZTJklIwJZW1hX2RlY2F5lEc/79cKPXCj14wKZ2V0X2NvbW1pdJRoAmgGaB6GlFKUjAVta2RpcpRoAmgGaCGGlFKUjAhkaXNjb3VudJRHP++uFHrhR66MGWdyYWRpZW50X2FjY3VtdWxhdGVfZXZlcnmUSwKMEW5fZGlmZnVzaW9uX3N0ZXBzlEtAjAlkaW1fbXVsdHOUSwFLBEsIh5SMCGV4cF9uYW1llIwYdmFsdWVzL2RlZmF1bHRzX0gxMjhfVDY0lIwJZGlmZnVzaW9ulIwVbW9kZWxzLlZhbHVlRGlmZnVzaW9ulIwJc2F2ZV9mcmVxlE3oA4wJc2F2ZV9kaWZmlGgCaAZoLoaUUpSMD21heF9wYXRoX2xlbmd0aJRNQJyMB2hvcml6b26US4CMDW5fdHJhaW5fc3RlcHOUR0EYagAAAAAAjApub3JtYWxpemVylIwQTGltaXRzTm9ybWFsaXplcpSMBmRldmljZZSMBGN1ZGGUjA5wcmVwcm9jZXNzX2Zuc5RdlIwUbWF6ZTJkX3NldF90ZXJtaW5hbHOUYYwGbm9ybWVklImMBmNvbmZpZ5SMDWNvbmZpZy5tYXplMmSUjAtuX3JlZmVyZW5jZZRLCIwKYWRkX2V4dHJhc5RoAmgGaD+GlFKUjAdsb2diYXNllIwEbG9nc5SMBnByZWZpeJSMD3ZhbHVlcy9kZWZhdWx0c5SMEWdlbmVyYXRlX2V4cF9uYW1llGgCaAZoRoaUUpSMC3NhbXBsZV9mcmVxlEsAjA1zYXZlX3BhcmFsbGVslImMBW1vZGVslIwUbW9kZWxzLlRlbXBvcmFsVmFsdWWUjAtyZWFkX2NvbmZpZ5RoAmgGaE2GlFKUjAZidWNrZXSUTowJbG9zc190eXBllIwIdmFsdWVfbDKUjApiYXRjaF9zaXpllEsgdWJoEoaUUpQu"
+    },
+    "exp_name": "values/defaults_H128_T64",
+    "generate_exp_name": {
+        "_string": "<bound method Parser.generate_exp_name of Parser(prog='train_values.py', usage=None, description=None, formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)>",
+        "_type": "python_object (type = method)",
+        "_value": "gASVZgQAAAAAAACMCGJ1aWx0aW5zlIwHZ2V0YXR0cpSTlIwIX19tYWluX1+UjAZQYXJzZXKUk5QpgZR9lCiMC3VzZV9wYWRkaW5nlImMCHNldF9zZWVklGgCaAZoCYaUUpSMB2RhdGFzZXSUjBJwb2ludG1hemUtdW1hemUtdjKUjAduX3NhdmVzlEsFjAhzYXZlcGF0aJSMMGxvZ3MvcG9pbnRtYXplLXVtYXplLXYyL3ZhbHVlcy9kZWZhdWx0c19IMTI4X1Q2NJSMDWxlYXJuaW5nX3JhdGWURz8qNuLrHEMtjA1ldmFsX2ZzdHJpbmdzlGgCaAZoEoaUUpSMCHJlbmRlcmVylIwUdXRpbHMuTWF6ZTJkUmVuZGVyZXKUjAZsb2FkZXKUjBVkYXRhc2V0cy5WYWx1ZURhdGFzZXSUjBFuX3N0ZXBzX3Blcl9lcG9jaJRNECeME3Rlcm1pbmF0aW9uX3BlbmFsdHmUSpz///+MBmNvbW1pdJSML2YzODMwZDhmZTY2YzZmMGJmNmZlYzhmNDkxNGFiZWYyNTFmOTJiNjkgbWF6ZTJklIwJZW1hX2RlY2F5lEc/79cKPXCj14wKZ2V0X2NvbW1pdJRoAmgGaB6GlFKUjAVta2RpcpRoAmgGaCGGlFKUjAhkaXNjb3VudJRHP++uFHrhR66MGWdyYWRpZW50X2FjY3VtdWxhdGVfZXZlcnmUSwKMEW5fZGlmZnVzaW9uX3N0ZXBzlEtAjAlkaW1fbXVsdHOUSwFLBEsIh5SMCGV4cF9uYW1llIwYdmFsdWVzL2RlZmF1bHRzX0gxMjhfVDY0lIwJZGlmZnVzaW9ulIwVbW9kZWxzLlZhbHVlRGlmZnVzaW9ulIwJc2F2ZV9mcmVxlE3oA4wJc2F2ZV9kaWZmlGgCaAZoLoaUUpSMD21heF9wYXRoX2xlbmd0aJRNQJyMB2hvcml6b26US4CMDW5fdHJhaW5fc3RlcHOUR0EYagAAAAAAjApub3JtYWxpemVylIwQTGltaXRzTm9ybWFsaXplcpSMBmRldmljZZSMBGN1ZGGUjA5wcmVwcm9jZXNzX2Zuc5RdlIwUbWF6ZTJkX3NldF90ZXJtaW5hbHOUYYwGbm9ybWVklImMBmNvbmZpZ5SMDWNvbmZpZy5tYXplMmSUjAtuX3JlZmVyZW5jZZRLCIwKYWRkX2V4dHJhc5RoAmgGaD+GlFKUjAdsb2diYXNllIwEbG9nc5SMBnByZWZpeJSMD3ZhbHVlcy9kZWZhdWx0c5SMEWdlbmVyYXRlX2V4cF9uYW1llGgCaAZoRoaUUpSMC3NhbXBsZV9mcmVxlEsAjA1zYXZlX3BhcmFsbGVslImMBW1vZGVslIwUbW9kZWxzLlRlbXBvcmFsVmFsdWWUjAtyZWFkX2NvbmZpZ5RoAmgGaE2GlFKUjAZidWNrZXSUTowJbG9zc190eXBllIwIdmFsdWVfbDKUjApiYXRjaF9zaXpllEsgdWJoRoaUUpQu"
+    },
+    "get_commit": {
+        "_string": "<bound method Parser.get_commit of Parser(prog='train_values.py', usage=None, description=None, formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)>",
+        "_type": "python_object (type = method)",
+        "_value": "gASVZgQAAAAAAACMCGJ1aWx0aW5zlIwHZ2V0YXR0cpSTlIwIX19tYWluX1+UjAZQYXJzZXKUk5QpgZR9lCiMC3VzZV9wYWRkaW5nlImMCHNldF9zZWVklGgCaAZoCYaUUpSMB2RhdGFzZXSUjBJwb2ludG1hemUtdW1hemUtdjKUjAduX3NhdmVzlEsFjAhzYXZlcGF0aJSMMGxvZ3MvcG9pbnRtYXplLXVtYXplLXYyL3ZhbHVlcy9kZWZhdWx0c19IMTI4X1Q2NJSMDWxlYXJuaW5nX3JhdGWURz8qNuLrHEMtjA1ldmFsX2ZzdHJpbmdzlGgCaAZoEoaUUpSMCHJlbmRlcmVylIwUdXRpbHMuTWF6ZTJkUmVuZGVyZXKUjAZsb2FkZXKUjBVkYXRhc2V0cy5WYWx1ZURhdGFzZXSUjBFuX3N0ZXBzX3Blcl9lcG9jaJRNECeME3Rlcm1pbmF0aW9uX3BlbmFsdHmUSpz///+MBmNvbW1pdJSML2YzODMwZDhmZTY2YzZmMGJmNmZlYzhmNDkxNGFiZWYyNTFmOTJiNjkgbWF6ZTJklIwJZW1hX2RlY2F5lEc/79cKPXCj14wKZ2V0X2NvbW1pdJRoAmgGaB6GlFKUjAVta2RpcpRoAmgGaCGGlFKUjAhkaXNjb3VudJRHP++uFHrhR66MGWdyYWRpZW50X2FjY3VtdWxhdGVfZXZlcnmUSwKMEW5fZGlmZnVzaW9uX3N0ZXBzlEtAjAlkaW1fbXVsdHOUSwFLBEsIh5SMCGV4cF9uYW1llIwYdmFsdWVzL2RlZmF1bHRzX0gxMjhfVDY0lIwJZGlmZnVzaW9ulIwVbW9kZWxzLlZhbHVlRGlmZnVzaW9ulIwJc2F2ZV9mcmVxlE3oA4wJc2F2ZV9kaWZmlGgCaAZoLoaUUpSMD21heF9wYXRoX2xlbmd0aJRNQJyMB2hvcml6b26US4CMDW5fdHJhaW5fc3RlcHOUR0EYagAAAAAAjApub3JtYWxpemVylIwQTGltaXRzTm9ybWFsaXplcpSMBmRldmljZZSMBGN1ZGGUjA5wcmVwcm9jZXNzX2Zuc5RdlIwUbWF6ZTJkX3NldF90ZXJtaW5hbHOUYYwGbm9ybWVklImMBmNvbmZpZ5SMDWNvbmZpZy5tYXplMmSUjAtuX3JlZmVyZW5jZZRLCIwKYWRkX2V4dHJhc5RoAmgGaD+GlFKUjAdsb2diYXNllIwEbG9nc5SMBnByZWZpeJSMD3ZhbHVlcy9kZWZhdWx0c5SMEWdlbmVyYXRlX2V4cF9uYW1llGgCaAZoRoaUUpSMC3NhbXBsZV9mcmVxlEsAjA1zYXZlX3BhcmFsbGVslImMBW1vZGVslIwUbW9kZWxzLlRlbXBvcmFsVmFsdWWUjAtyZWFkX2NvbmZpZ5RoAmgGaE2GlFKUjAZidWNrZXSUTowJbG9zc190eXBllIwIdmFsdWVfbDKUjApiYXRjaF9zaXpllEsgdWJoHoaUUpQu"
+    },
+    "gradient_accumulate_every": 2,
+    "horizon": 128,
+    "learning_rate": 0.0002,
+    "loader": "datasets.ValueDataset",
+    "logbase": "logs",
+    "loss_type": "value_l2",
+    "max_path_length": 40000,
+    "mkdir": {
+        "_string": "<bound method Parser.mkdir of Parser(prog='train_values.py', usage=None, description=None, formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)>",
+        "_type": "python_object (type = method)",
+        "_value": "gASVZgQAAAAAAACMCGJ1aWx0aW5zlIwHZ2V0YXR0cpSTlIwIX19tYWluX1+UjAZQYXJzZXKUk5QpgZR9lCiMC3VzZV9wYWRkaW5nlImMCHNldF9zZWVklGgCaAZoCYaUUpSMB2RhdGFzZXSUjBJwb2ludG1hemUtdW1hemUtdjKUjAduX3NhdmVzlEsFjAhzYXZlcGF0aJSMMGxvZ3MvcG9pbnRtYXplLXVtYXplLXYyL3ZhbHVlcy9kZWZhdWx0c19IMTI4X1Q2NJSMDWxlYXJuaW5nX3JhdGWURz8qNuLrHEMtjA1ldmFsX2ZzdHJpbmdzlGgCaAZoEoaUUpSMCHJlbmRlcmVylIwUdXRpbHMuTWF6ZTJkUmVuZGVyZXKUjAZsb2FkZXKUjBVkYXRhc2V0cy5WYWx1ZURhdGFzZXSUjBFuX3N0ZXBzX3Blcl9lcG9jaJRNECeME3Rlcm1pbmF0aW9uX3BlbmFsdHmUSpz///+MBmNvbW1pdJSML2YzODMwZDhmZTY2YzZmMGJmNmZlYzhmNDkxNGFiZWYyNTFmOTJiNjkgbWF6ZTJklIwJZW1hX2RlY2F5lEc/79cKPXCj14wKZ2V0X2NvbW1pdJRoAmgGaB6GlFKUjAVta2RpcpRoAmgGaCGGlFKUjAhkaXNjb3VudJRHP++uFHrhR66MGWdyYWRpZW50X2FjY3VtdWxhdGVfZXZlcnmUSwKMEW5fZGlmZnVzaW9uX3N0ZXBzlEtAjAlkaW1fbXVsdHOUSwFLBEsIh5SMCGV4cF9uYW1llIwYdmFsdWVzL2RlZmF1bHRzX0gxMjhfVDY0lIwJZGlmZnVzaW9ulIwVbW9kZWxzLlZhbHVlRGlmZnVzaW9ulIwJc2F2ZV9mcmVxlE3oA4wJc2F2ZV9kaWZmlGgCaAZoLoaUUpSMD21heF9wYXRoX2xlbmd0aJRNQJyMB2hvcml6b26US4CMDW5fdHJhaW5fc3RlcHOUR0EYagAAAAAAjApub3JtYWxpemVylIwQTGltaXRzTm9ybWFsaXplcpSMBmRldmljZZSMBGN1ZGGUjA5wcmVwcm9jZXNzX2Zuc5RdlIwUbWF6ZTJkX3NldF90ZXJtaW5hbHOUYYwGbm9ybWVklImMBmNvbmZpZ5SMDWNvbmZpZy5tYXplMmSUjAtuX3JlZmVyZW5jZZRLCIwKYWRkX2V4dHJhc5RoAmgGaD+GlFKUjAdsb2diYXNllIwEbG9nc5SMBnByZWZpeJSMD3ZhbHVlcy9kZWZhdWx0c5SMEWdlbmVyYXRlX2V4cF9uYW1llGgCaAZoRoaUUpSMC3NhbXBsZV9mcmVxlEsAjA1zYXZlX3BhcmFsbGVslImMBW1vZGVslIwUbW9kZWxzLlRlbXBvcmFsVmFsdWWUjAtyZWFkX2NvbmZpZ5RoAmgGaE2GlFKUjAZidWNrZXSUTowJbG9zc190eXBllIwIdmFsdWVfbDKUjApiYXRjaF9zaXpllEsgdWJoIYaUUpQu"
+    },
+    "model": "models.TemporalValue",
+    "n_diffusion_steps": 64,
+    "n_reference": 8,
+    "n_saves": 5,
+    "n_steps_per_epoch": 10000,
+    "n_train_steps": 400000.0,
+    "normalizer": "LimitsNormalizer",
+    "normed": false,
+    "prefix": "values/defaults",
+    "preprocess_fns": [
+        "maze2d_set_terminals"
+    ],
+    "read_config": {
+        "_string": "<bound method Parser.read_config of Parser(prog='train_values.py', usage=None, description=None, formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)>",
+        "_type": "python_object (type = method)",
+        "_value": "gASVZgQAAAAAAACMCGJ1aWx0aW5zlIwHZ2V0YXR0cpSTlIwIX19tYWluX1+UjAZQYXJzZXKUk5QpgZR9lCiMC3VzZV9wYWRkaW5nlImMCHNldF9zZWVklGgCaAZoCYaUUpSMB2RhdGFzZXSUjBJwb2ludG1hemUtdW1hemUtdjKUjAduX3NhdmVzlEsFjAhzYXZlcGF0aJSMMGxvZ3MvcG9pbnRtYXplLXVtYXplLXYyL3ZhbHVlcy9kZWZhdWx0c19IMTI4X1Q2NJSMDWxlYXJuaW5nX3JhdGWURz8qNuLrHEMtjA1ldmFsX2ZzdHJpbmdzlGgCaAZoEoaUUpSMCHJlbmRlcmVylIwUdXRpbHMuTWF6ZTJkUmVuZGVyZXKUjAZsb2FkZXKUjBVkYXRhc2V0cy5WYWx1ZURhdGFzZXSUjBFuX3N0ZXBzX3Blcl9lcG9jaJRNECeME3Rlcm1pbmF0aW9uX3BlbmFsdHmUSpz///+MBmNvbW1pdJSML2YzODMwZDhmZTY2YzZmMGJmNmZlYzhmNDkxNGFiZWYyNTFmOTJiNjkgbWF6ZTJklIwJZW1hX2RlY2F5lEc/79cKPXCj14wKZ2V0X2NvbW1pdJRoAmgGaB6GlFKUjAVta2RpcpRoAmgGaCGGlFKUjAhkaXNjb3VudJRHP++uFHrhR66MGWdyYWRpZW50X2FjY3VtdWxhdGVfZXZlcnmUSwKMEW5fZGlmZnVzaW9uX3N0ZXBzlEtAjAlkaW1fbXVsdHOUSwFLBEsIh5SMCGV4cF9uYW1llIwYdmFsdWVzL2RlZmF1bHRzX0gxMjhfVDY0lIwJZGlmZnVzaW9ulIwVbW9kZWxzLlZhbHVlRGlmZnVzaW9ulIwJc2F2ZV9mcmVxlE3oA4wJc2F2ZV9kaWZmlGgCaAZoLoaUUpSMD21heF9wYXRoX2xlbmd0aJRNQJyMB2hvcml6b26US4CMDW5fdHJhaW5fc3RlcHOUR0EYagAAAAAAjApub3JtYWxpemVylIwQTGltaXRzTm9ybWFsaXplcpSMBmRldmljZZSMBGN1ZGGUjA5wcmVwcm9jZXNzX2Zuc5RdlIwUbWF6ZTJkX3NldF90ZXJtaW5hbHOUYYwGbm9ybWVklImMBmNvbmZpZ5SMDWNvbmZpZy5tYXplMmSUjAtuX3JlZmVyZW5jZZRLCIwKYWRkX2V4dHJhc5RoAmgGaD+GlFKUjAdsb2diYXNllIwEbG9nc5SMBnByZWZpeJSMD3ZhbHVlcy9kZWZhdWx0c5SMEWdlbmVyYXRlX2V4cF9uYW1llGgCaAZoRoaUUpSMC3NhbXBsZV9mcmVxlEsAjA1zYXZlX3BhcmFsbGVslImMBW1vZGVslIwUbW9kZWxzLlRlbXBvcmFsVmFsdWWUjAtyZWFkX2NvbmZpZ5RoAmgGaE2GlFKUjAZidWNrZXSUTowJbG9zc190eXBllIwIdmFsdWVfbDKUjApiYXRjaF9zaXpllEsgdWJoTYaUUpQu"
+    },
+    "renderer": "utils.Maze2dRenderer",
+    "reproducibility": {
+        "command_line": "python scripts/train_values.py",
+        "git_has_uncommitted_changes": true,
+        "git_root": "/fs/nexus-scratch/ktorsh/diffuser",
+        "git_url": "https://www.github.com/ktorsh/diff/tree/f3830d8fe66c6f0bf6fec8f4914abef251f92b69",
+        "time": "Fri Apr 11 18:03:20 2025"
+    },
+    "sample_freq": 0,
+    "save_diff": {
+        "_string": "<bound method Parser.save_diff of Parser(prog='train_values.py', usage=None, description=None, formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)>",
+        "_type": "python_object (type = method)",
+        "_value": "gASVZgQAAAAAAACMCGJ1aWx0aW5zlIwHZ2V0YXR0cpSTlIwIX19tYWluX1+UjAZQYXJzZXKUk5QpgZR9lCiMC3VzZV9wYWRkaW5nlImMCHNldF9zZWVklGgCaAZoCYaUUpSMB2RhdGFzZXSUjBJwb2ludG1hemUtdW1hemUtdjKUjAduX3NhdmVzlEsFjAhzYXZlcGF0aJSMMGxvZ3MvcG9pbnRtYXplLXVtYXplLXYyL3ZhbHVlcy9kZWZhdWx0c19IMTI4X1Q2NJSMDWxlYXJuaW5nX3JhdGWURz8qNuLrHEMtjA1ldmFsX2ZzdHJpbmdzlGgCaAZoEoaUUpSMCHJlbmRlcmVylIwUdXRpbHMuTWF6ZTJkUmVuZGVyZXKUjAZsb2FkZXKUjBVkYXRhc2V0cy5WYWx1ZURhdGFzZXSUjBFuX3N0ZXBzX3Blcl9lcG9jaJRNECeME3Rlcm1pbmF0aW9uX3BlbmFsdHmUSpz///+MBmNvbW1pdJSML2YzODMwZDhmZTY2YzZmMGJmNmZlYzhmNDkxNGFiZWYyNTFmOTJiNjkgbWF6ZTJklIwJZW1hX2RlY2F5lEc/79cKPXCj14wKZ2V0X2NvbW1pdJRoAmgGaB6GlFKUjAVta2RpcpRoAmgGaCGGlFKUjAhkaXNjb3VudJRHP++uFHrhR66MGWdyYWRpZW50X2FjY3VtdWxhdGVfZXZlcnmUSwKMEW5fZGlmZnVzaW9uX3N0ZXBzlEtAjAlkaW1fbXVsdHOUSwFLBEsIh5SMCGV4cF9uYW1llIwYdmFsdWVzL2RlZmF1bHRzX0gxMjhfVDY0lIwJZGlmZnVzaW9ulIwVbW9kZWxzLlZhbHVlRGlmZnVzaW9ulIwJc2F2ZV9mcmVxlE3oA4wJc2F2ZV9kaWZmlGgCaAZoLoaUUpSMD21heF9wYXRoX2xlbmd0aJRNQJyMB2hvcml6b26US4CMDW5fdHJhaW5fc3RlcHOUR0EYagAAAAAAjApub3JtYWxpemVylIwQTGltaXRzTm9ybWFsaXplcpSMBmRldmljZZSMBGN1ZGGUjA5wcmVwcm9jZXNzX2Zuc5RdlIwUbWF6ZTJkX3NldF90ZXJtaW5hbHOUYYwGbm9ybWVklImMBmNvbmZpZ5SMDWNvbmZpZy5tYXplMmSUjAtuX3JlZmVyZW5jZZRLCIwKYWRkX2V4dHJhc5RoAmgGaD+GlFKUjAdsb2diYXNllIwEbG9nc5SMBnByZWZpeJSMD3ZhbHVlcy9kZWZhdWx0c5SMEWdlbmVyYXRlX2V4cF9uYW1llGgCaAZoRoaUUpSMC3NhbXBsZV9mcmVxlEsAjA1zYXZlX3BhcmFsbGVslImMBW1vZGVslIwUbW9kZWxzLlRlbXBvcmFsVmFsdWWUjAtyZWFkX2NvbmZpZ5RoAmgGaE2GlFKUjAZidWNrZXSUTowJbG9zc190eXBllIwIdmFsdWVfbDKUjApiYXRjaF9zaXpllEsgdWJoLoaUUpQu"
+    },
+    "save_freq": 1000,
+    "save_parallel": false,
+    "savepath": "logs/pointmaze-umaze-v2/values/defaults_H128_T64",
+    "set_seed": {
+        "_string": "<bound method Parser.set_seed of Parser(prog='train_values.py', usage=None, description=None, formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)>",
+        "_type": "python_object (type = method)",
+        "_value": "gASVZgQAAAAAAACMCGJ1aWx0aW5zlIwHZ2V0YXR0cpSTlIwIX19tYWluX1+UjAZQYXJzZXKUk5QpgZR9lCiMC3VzZV9wYWRkaW5nlImMCHNldF9zZWVklGgCaAZoCYaUUpSMB2RhdGFzZXSUjBJwb2ludG1hemUtdW1hemUtdjKUjAduX3NhdmVzlEsFjAhzYXZlcGF0aJSMMGxvZ3MvcG9pbnRtYXplLXVtYXplLXYyL3ZhbHVlcy9kZWZhdWx0c19IMTI4X1Q2NJSMDWxlYXJuaW5nX3JhdGWURz8qNuLrHEMtjA1ldmFsX2ZzdHJpbmdzlGgCaAZoEoaUUpSMCHJlbmRlcmVylIwUdXRpbHMuTWF6ZTJkUmVuZGVyZXKUjAZsb2FkZXKUjBVkYXRhc2V0cy5WYWx1ZURhdGFzZXSUjBFuX3N0ZXBzX3Blcl9lcG9jaJRNECeME3Rlcm1pbmF0aW9uX3BlbmFsdHmUSpz///+MBmNvbW1pdJSML2YzODMwZDhmZTY2YzZmMGJmNmZlYzhmNDkxNGFiZWYyNTFmOTJiNjkgbWF6ZTJklIwJZW1hX2RlY2F5lEc/79cKPXCj14wKZ2V0X2NvbW1pdJRoAmgGaB6GlFKUjAVta2RpcpRoAmgGaCGGlFKUjAhkaXNjb3VudJRHP++uFHrhR66MGWdyYWRpZW50X2FjY3VtdWxhdGVfZXZlcnmUSwKMEW5fZGlmZnVzaW9uX3N0ZXBzlEtAjAlkaW1fbXVsdHOUSwFLBEsIh5SMCGV4cF9uYW1llIwYdmFsdWVzL2RlZmF1bHRzX0gxMjhfVDY0lIwJZGlmZnVzaW9ulIwVbW9kZWxzLlZhbHVlRGlmZnVzaW9ulIwJc2F2ZV9mcmVxlE3oA4wJc2F2ZV9kaWZmlGgCaAZoLoaUUpSMD21heF9wYXRoX2xlbmd0aJRNQJyMB2hvcml6b26US4CMDW5fdHJhaW5fc3RlcHOUR0EYagAAAAAAjApub3JtYWxpemVylIwQTGltaXRzTm9ybWFsaXplcpSMBmRldmljZZSMBGN1ZGGUjA5wcmVwcm9jZXNzX2Zuc5RdlIwUbWF6ZTJkX3NldF90ZXJtaW5hbHOUYYwGbm9ybWVklImMBmNvbmZpZ5SMDWNvbmZpZy5tYXplMmSUjAtuX3JlZmVyZW5jZZRLCIwKYWRkX2V4dHJhc5RoAmgGaD+GlFKUjAdsb2diYXNllIwEbG9nc5SMBnByZWZpeJSMD3ZhbHVlcy9kZWZhdWx0c5SMEWdlbmVyYXRlX2V4cF9uYW1llGgCaAZoRoaUUpSMC3NhbXBsZV9mcmVxlEsAjA1zYXZlX3BhcmFsbGVslImMBW1vZGVslIwUbW9kZWxzLlRlbXBvcmFsVmFsdWWUjAtyZWFkX2NvbmZpZ5RoAmgGaE2GlFKUjAZidWNrZXSUTowJbG9zc190eXBllIwIdmFsdWVfbDKUjApiYXRjaF9zaXpllEsgdWJoCYaUUpQu"
+    },
+    "termination_penalty": -100,
+    "use_padding": false
+}

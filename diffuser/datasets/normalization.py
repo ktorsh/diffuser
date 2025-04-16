@@ -42,6 +42,9 @@ class DatasetNormalizer:
 
     def unnormalize(self, x, key):
         return self.normalizers[key].unnormalize(x)
+    
+    def get_field_normalizers(self):
+        return self.normalizers
 
 def flatten(dataset, path_lengths):
     '''

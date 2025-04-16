@@ -18,7 +18,7 @@ args = Parser().parse_args('plan')
 
 # logger = utils.Logger(args)
 
-env = datasets.load_environment(args.dataset, reset_target=False)
+env = datasets.load_environment(args.dataset, reset_target=True)
 
 #---------------------------------- loading ----------------------------------#
 
@@ -33,7 +33,7 @@ policy = Policy(diffusion, dataset.normalizer)
 #---------------------------------- main loop ----------------------------------#
 env.reset_pos = np.array([-1, -1])
 env.goal_pos = np.array([1, 1])
-observation, _ = env.reset()
+observation, _ = env.reset(options={'reset_cell': np.array([3, 1]), 'goal_cell': np.array([1, 1])})
 
 if args.conditional:
     print('Resetting target')
@@ -63,11 +63,8 @@ for t in range(env.max_episode_steps):
         print("Condition")
         print(cond)
         action, samples = policy(cond, batch_size=args.batch_size)
-        print(action)
-        print(samples)
         actions = samples.actions[0]
         sequence = samples.observations[0]
-        print()
 
     # pdb.set_trace()
 

@@ -57,7 +57,9 @@ def add_deltas(env):
     return _fn
 
 
-def maze2d_set_terminals(env):
+def maze2d_set_terminals(env): 
+    print("environment")
+    print(env)
     env = load_environment(env) if type(env) == str else env
     observation, _ = env.reset()
 
@@ -65,21 +67,16 @@ def maze2d_set_terminals(env):
     threshold = 0.5 
     print(f"Goal: {goal}")
     def _fn(dataset):
-        print(dataset)
         xy = dataset.observations[:,:2]
         distances = np.linalg.norm(xy - goal, axis=-1)
-        print(f"Min Distances: {distances.min()}")
         at_goal = distances < threshold
-        print(f"At Goal Count: {at_goal.sum()}")
         timeouts = np.zeros_like(dataset.timeouts)
-        print(at_goal)
         ## timeout at time t iff
         ##      at goal at time t and
         ##      not at goal at time t + 1
         timeouts[:-1] = at_goal[:-1] * ~at_goal[1:]
         timeout_steps = np.where(timeouts)[0]
         path_lengths = timeout_steps[1:] - timeout_steps[:-1]
-        print(path_lengths)
         print(
             f'[ utils/preprocessing ] Segmented {env.name} | {len(path_lengths)} paths | '
             f'min length: {path_lengths.min()} | max length: {path_lengths.max()}'

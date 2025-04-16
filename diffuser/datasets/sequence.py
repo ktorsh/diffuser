@@ -107,7 +107,7 @@ class ValueDataset(SequenceDataset):
         super().__init__(*args, **kwargs)
         self.discount = discount
         self.discounts = self.discount ** np.arange(self.max_path_length)[:,None]
-
+    
     def __getitem__(self, idx):
         batch = super().__getitem__(idx)
         path_ind, start, end = self.indices[idx]

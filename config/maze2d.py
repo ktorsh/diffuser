@@ -13,6 +13,13 @@ diffusion_args_to_watch = [
     ('n_diffusion_steps', 'T'),
 ]
 
+value_args_to_watch = [
+    ('prefix', ''),
+    ('horizon', 'H'),
+    ('n_diffusion_steps', 'T'),
+    ## value kwargs
+    ('discount', 'd'),
+]
 
 plan_args_to_watch = [
     ('prefix', ''),
@@ -54,7 +61,7 @@ base = {
         ## serialization
         'logbase': 'logs',
         'prefix': 'diffusion/',
-        'exp_name': watch(diffusion_args_to_watch),
+        'exp_name': watch(value_args_to_watch),
 
         ## training
         'n_steps_per_epoch': 10000,
@@ -74,27 +81,84 @@ base = {
         'device': 'cuda',
     },
 
-    'plan': {
-        'batch_size': 1,
+    'values': {
+        'model': 'models.TemporalValue',
+        'diffusion': 'models.ValueDiffusion',
+        'horizon': 128,
+        'n_diffusion_steps': 64,
+        'dim_mults': (1, 4, 8),
+        'renderer': 'utils.Maze2dRenderer',
+
+        ## value-specific kwargs
+        'discount': 0.99,
+        'termination_penalty': -100,
+        'normed': False,
+
+        ## dataset
+        'loader': 'datasets.ValueDataset',
+        'normalizer': 'LimitsNormalizer',
+        'preprocess_fns': ['maze2d_set_terminals'],
+        'use_padding': False,
+        'max_path_length': 40000,
+
+        ## serialization
+        'logbase': 'logs',
+        'prefix': 'values/defaults',
+        'exp_name': watch(diffusion_args_to_watch),
+
+        ## training
+        'n_steps_per_epoch': 10000,
+        'loss_type': 'value_l2',
+        'n_train_steps': 400e3,
+        'batch_size': 32,
+        'learning_rate': 2e-4,
+        'gradient_accumulate_every': 2,
+        'ema_decay': 0.995,
+        'save_freq': 1000,
+        'sample_freq': 0,
+        'n_saves': 5,
+        'save_parallel': False,
+        'n_reference': 8,
+        'bucket': None,
         'device': 'cuda',
+    },
+
+    'plan': {
+        'batch_size': 10,
+        'device': 'cuda',
+
+        'guide': 'guides.ValueGuide',
+        'policy': 'guides.GuidedPolicy',
 
         ## diffusion model
         'horizon': 256,
         'n_diffusion_steps': 256,
         'normalizer': 'LimitsNormalizer',
 
+
         ## serialization
         'vis_freq': 10,
         'logbase': 'logs',
+        'loadbase': 'logs',
         'prefix': 'plans/release',
         'exp_name': watch(plan_args_to_watch),
         'suffix': '0',
+        'max_render': 8,
 
         'conditional': False,
 
+        ## sample_kwargs
+        'n_guide_steps': 2,
+        'scale': 0.1,
+        't_stopgrad': 2,
+        'scale_grad_by_std': True,
+        'preprocess_fns': ['maze2d_set_terminals'],
+
         ## loading
         'diffusion_loadpath': 'f:diffusion/H{horizon}_T{n_diffusion_steps}',
+        'value_loadpath': 'f:values/defaults_H{horizon}_T{n_diffusion_steps}',
         'diffusion_epoch': 'latest',
+        'value_epoch': 'latest',
     },
 
 }
@@ -110,6 +174,10 @@ base = {
 
 pointmaze_umaze_v2 = {
     'diffusion': {
+        'horizon': 128,
+        'n_diffusion_steps': 64,
+    },
+    'value': { 
         'horizon': 128,
         'n_diffusion_steps': 64,
     },
