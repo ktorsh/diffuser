@@ -9,18 +9,23 @@ from .normalization import DatasetNormalizer
 from .buffer import ReplayBuffer
 
 Batch = namedtuple('Batch', 'trajectories conditions')
+RewardBatch = namedtuple('Batch', 'trajectories conditions returns')
 ValueBatch = namedtuple('ValueBatch', 'trajectories conditions values')
 
 class SequenceDataset(torch.utils.data.Dataset):
 
     def __init__(self, env='hopper-medium-replay', horizon=64,
         normalizer='LimitsNormalizer', preprocess_fns=[], max_path_length=1000,
-        max_n_episodes=10000, termination_penalty=0, use_padding=True):
+        max_n_episodes=10000, termination_penalty=0, use_padding=True, discount=0.99, returns_scale=1000, include_returns=False):
         self.preprocess_fn = get_preprocess_fn(preprocess_fns, env)
         self.env = env = load_environment(env)
+        self.returns_scale = returns_scale
         self.horizon = horizon
         self.max_path_length = max_path_length
+        self.discount = discount
+        self.discounts = self.discount ** np.arange(self.max_path_length)[:, None]
         self.use_padding = use_padding
+        self.include_returns = include_returns
         itr = sequence_dataset(env, self.preprocess_fn)
 
         fields = ReplayBuffer(max_n_episodes, max_path_length, termination_penalty)
@@ -84,8 +89,19 @@ class SequenceDataset(torch.utils.data.Dataset):
 
         conditions = self.get_conditions(observations)
         trajectories = np.concatenate([actions, observations], axis=-1)
-        batch = Batch(trajectories, conditions)
+
+        if self.include_returns:
+            rewards = self.fields.rewards[path_ind, start:]
+            discounts = self.discounts[:len(rewards)]
+            returns = (discounts * rewards).sum()
+            returns = np.array([returns/self.returns_scale], dtype=np.float32)
+            batch = RewardBatch(trajectories, conditions, returns)
+        else:
+            batch = Batch(trajectories, conditions)
+
         return batch
+
+        
 class CondSequenceDataset(torch.utils.data.Dataset):
 
     def __init__(self, env='hopper-medium-replay', horizon=64,

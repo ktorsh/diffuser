@@ -8,7 +8,7 @@ import diffuser.utils as utils
 from diffuser.datasets.preprocessing import get_policy_preprocess_fn
 
 Trajectories = namedtuple('Trajectories', 'actions observations')
-GuidedTrajectories = namedtuple('GuidedTrajectories', 'actions observations value')
+GuidedTrajectories = namedtuple('GuidedTrajectories', 'observations value')
 
 class Policy:
 

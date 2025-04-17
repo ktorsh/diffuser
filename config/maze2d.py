@@ -79,6 +79,8 @@ base = {
         'n_samples': 10,
         'bucket': None,
         'device': 'cuda',
+
+        'include_return': True,
     },
 
     'values': {
@@ -121,6 +123,8 @@ base = {
         'n_reference': 8,
         'bucket': None,
         'device': 'cuda',
+
+        'include_return': True,
     },
 
     'plan': {
@@ -159,6 +163,8 @@ base = {
         'value_loadpath': 'f:values/defaults_H{horizon}_T{n_diffusion_steps}',
         'diffusion_epoch': 'latest',
         'value_epoch': 'latest',
+
+        'include_return': True,
     },
 
 }
