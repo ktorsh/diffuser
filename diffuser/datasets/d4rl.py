@@ -37,13 +37,15 @@ def load_environment(name, reset_target=True):
         return name
     with suppress_output():
         wrapped_env = gym.make('PointMaze_UMaze-v3', reset_target=reset_target)
+        # wrapped_env = gym.make(name, reset_target=reset_target)
     env = wrapped_env.unwrapped
     env.max_episode_steps = wrapped_env._max_episode_steps
     env.name = name
     return env
 
 def get_dataset(name):
-    return Dataset("/fs/nexus-scratch/ktorsh/diffuser/diffuser/datasets/preloaded_data/pointmaze-umaze-sparse.hdf5")
+    return Dataset("diffuser/datasets/preloaded_data/pointmaze-umaze-sparse.hdf5")
+    # return Dataset(os.path.join("preloaded_data", name))
 
 # def load_dataset_and_environment(name): 
 #     dataset = minari.load_dataset('D4RL/pointmaze/umaze-v2')

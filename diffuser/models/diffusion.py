@@ -151,14 +151,14 @@ class GaussianDiffusion(nn.Module):
         for i in reversed(range(0, self.n_timesteps)):
             timesteps = torch.full((batch_size,), i, device=device, dtype=torch.long)
             if 'guide' in kwargs.keys(): 
-                 x, values = kwargs["sample_fn"](self, x, cond, timesteps, **kwargs)
+                x, values = kwargs["sample_fn"](self, x, cond, timesteps, **kwargs)
+                output = {'t': i, 'vmin': values.min().item(), 'vmax': values.max().item()} 
+                print(output)
             else: 
                 x = self.p_sample(x, cond, timesteps)
             x = apply_conditioning(x, cond, self.action_dim)
 
             # progress.update({'t': i})
-            output = {'t': i, 'vmin': values.min().item(), 'vmax': values.max().item()} 
-            print(output)
 
             if return_diffusion: diffusion.append(x)
 

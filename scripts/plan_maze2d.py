@@ -31,9 +31,7 @@ renderer = diffusion_experiment.renderer
 policy = Policy(diffusion, dataset.normalizer)
 
 #---------------------------------- main loop ----------------------------------#
-env.reset_pos = np.array([-1, -1])
-env.goal_pos = np.array([1, 1])
-observation, _ = env.reset(options={'reset_cell': np.array([3, 1]), 'goal_cell': np.array([1, 1])})
+observation, _ = env.reset(options={'reset_cell': np.array([1, 1]), 'goal_cell': np.array([2, 3])})
 
 if args.conditional:
     print('Resetting target')

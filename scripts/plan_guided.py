@@ -11,6 +11,8 @@ import diffuser.utils as utils
 
 class Parser(utils.Parser):
     dataset: str = 'pointmaze-umaze-v2'
+    trajectories: str = 'pointmaze-umaze-sparse.hdf5'
+    env_name: str = 'PointMaze_UMaze-v3'
     config: str = 'config.maze2d'
 
 #---------------------------------- setup ----------------------------------#
@@ -69,7 +71,7 @@ policy_config = utils.Config(
 logger = logger_config()
 policy = policy_config()
 
-env = datasets.load_environment(args.dataset, reset_target=True)
+env = datasets.load_environment(args.env_name, reset_target=True)
 #---------------------------------- main loop ----------------------------------#
 observation, _ = env.reset(options={'reset_cell': np.array([1, 1]), 'goal_cell': np.array([2, 3])})
 
