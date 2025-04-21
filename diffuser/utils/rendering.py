@@ -272,10 +272,14 @@ class MuJoCoRenderer:
 
 MAZE_BOUNDS = {
     'pointmaze-umaze-v2': (0, 5, 0, 5),
+    'pointmaze_opendense_v2': (0, 5, 0, 7),
     'maze2d-medium-v1': (0, 8, 0, 8),
     'maze2d-large-v1': (0, 9, 0, 12)
 }
-
+MAZE_RENDER_OFFSETS = { 
+     'pointmaze-umaze-v2': (1, 1, 0.4, 0.4),
+     'pointmaze_opendense_v2': (5/7, 1, 0.4, 0.4),
+}
 class MazeRenderer:
 
     def __init__(self, env):
@@ -296,8 +300,8 @@ class MazeRenderer:
 
         path_length = len(observations)
         colors = plt.cm.jet(np.linspace(0,1,path_length))
-        plt.plot(observations[:,0] +0.4, observations[:,1] +0.4, c='black', zorder=10)
-        plt.scatter(observations[:,0] +0.4, observations[:,1] +0.4, c=colors, zorder=20)
+        plt.plot(observations[:,0] , observations[:,1], c='black', zorder=10)
+        plt.scatter(observations[:,0], observations[:,1], c=colors, zorder=20)
         plt.axis('off')
         plt.title(title)
         img = plot2img(fig, remove_margins=self._remove_margins)
@@ -337,6 +341,7 @@ class Maze2dRenderer(MazeRenderer):
 
     def renders(self, observations, conditions=None, **kwargs):
         bounds = MAZE_BOUNDS[self.env_name]
+        offset = MAZE_RENDER_OFFSETS[self.env_name]
 
         observations = observations + .5
         if len(bounds) == 2:
@@ -348,6 +353,9 @@ class Maze2dRenderer(MazeRenderer):
             observations[:, 1] /= jscale
         else:
             raise RuntimeError(f'Unrecognized bounds for {self.env_name}: {bounds}')
+
+        observations[:, 0] = observations[:, 0] * offset[0] + offset[2]
+        observations[:, 1] = observations[:, 1] * offset[1] + offset[3]
 
         if conditions is not None:
             conditions /= scale

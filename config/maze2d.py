@@ -84,8 +84,8 @@ base = {
     'values': {
         'model': 'models.TemporalValue',
         'diffusion': 'models.ValueDiffusion',
-        'horizon': 128,
-        'n_diffusion_steps': 64,
+        'horizon': 256,
+        'n_diffusion_steps': 128,
         'dim_mults': (1, 4, 8),
         'renderer': 'utils.Maze2dRenderer',
 
@@ -177,13 +177,28 @@ pointmaze_umaze_v2 = {
         'horizon': 128,
         'n_diffusion_steps': 64,
     },
-    'value': { 
+    'values': { 
         'horizon': 128,
         'n_diffusion_steps': 64,
     },
     'plan': {
         'horizon': 128,
         'n_diffusion_steps': 64,
+    },
+}
+
+pointmaze_opendense_v2 = { 
+    'diffusion': {
+        'horizon': 256,
+        'n_diffusion_steps': 128,
+    },
+    'value': { 
+        'horizon': 256,
+        'n_diffusion_steps': 128,
+    },
+    'plan': {
+        'horizon': 256,
+        'n_diffusion_steps': 128,
     },
 }
 
