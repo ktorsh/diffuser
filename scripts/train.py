@@ -7,7 +7,7 @@ import pdb
 #-----------------------------------------------------------------------------#
 
 class Parser(utils.Parser):
-    dataset: str = 'pointmaze-umaze-v2'
+    dataset: str = 'pointmaze_opendense_v2'
     
     config: str = 'config.maze2d'
 
