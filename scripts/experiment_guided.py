@@ -1,8 +1,10 @@
 import json
 import numpy as np
 from os.path import join
-import pdb
+import pdb, wandb
 
+import sys
+sys.path.append('./')
 from gymnasium import spaces
 from diffuser.guides.policies import Policy
 from diffuser.guides.functions import n_step_guided_p_sample
@@ -109,11 +111,26 @@ policy = policy_config()
 successes = 0
 env = datasets.load_environment(args.env_name, reset_target=True)
 env = override_physics(env, 5, 1)
-env.unwrapped.add_xy_position_noise = add_xy_position_noise
-for j in range(50):
+#env.unwrapped.add_xy_position_noise = add_xy_position_noise
+run = wandb.init(
+    # Set the wandb entity where your project will be logged (generally your team name).
+    entity="ldu0040-university-of-maryland",
+    # Set the wandb project where this run will be logged.
+    project="diffuserPerturb",
+    # Track hyperparameters and run metadata.
+    config={
+        "scale": 0.01,
+        "perturberance": 0.4,
+        "architecture": "guided",
+        "dataset": "UMaze",
+    },
+)
+starts = []
+ends = []
+for j in range(200):
     print(j)
     #---------------------------------- main loop ----------------------------------#
-    observation, _ = env.reset(options={'reset_cell': np.array([1, 1]), 'goal_cell': np.array([3, 3])})
+    observation, _ = env.reset()
 
     if args.conditional:
         env.set_target()
@@ -138,6 +155,9 @@ for j in range(50):
         ## can replan if desired, but the open-loop plans are good enough for maze2d
         ## that we really only need to plan once
         if t == 0:
+            starts.append(state[:2])
+            ends.append(observation['desired_goal'])
+            run.log({"start_x": state[0], "start_y": state[1], "end_x": observation['desired_goal'][0], "end_y": observation['desired_goal'][1]})
             cond[0] = observation['observation']
             print("Condition")
             print(cond)
@@ -161,6 +181,8 @@ for j in range(50):
 
         ## can use actions or define a simple controller based on state predictions
         action = next_waypoint[:2] - state[:2] + (next_waypoint[2:] - state[2:])
+
+        action = action - 0.4
         # pdb.set_trace()
         ####
 
@@ -180,9 +202,16 @@ for j in range(50):
         score = total_reward
         if total_reward > 0:
             successes += 1
+            run.log({"success": 1, "successes": successes, "time elapsed": t})
+            break
+        elif t == 299:
+            run.log({"success": 0, "successes": successes, "time elapsed": t})
             break
 
         observation = next_observation
 
 # logger.finish(t, env.max_episode_steps, score=score, value=0)
 print("Successes: ", successes)
+print("Starts: ", starts)
+print("Ends: ", ends)
+run.finish()
